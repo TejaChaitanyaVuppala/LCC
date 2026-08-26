@@ -137,6 +137,55 @@ def main():
                 except Exception as e:
                     log_error(f"Groq failed to generate solution: {str(e)}")
 
+            # If not dry_run, test both solutions using Run Code first
+            gemini_run_verdict = None
+            groq_run_verdict = None
+            gemini_passed = 0
+            gemini_total = 0
+            groq_passed = 0
+            groq_total = 0
+
+            if not args.dry_run:
+                # Test Gemini
+                if gemini_code:
+                    try:
+                        log_info("Testing Gemini solution against sample testcases...")
+                        run_id = lc_client.run_solution(
+                            title_slug=daily["slug"],
+                            question_id=daily["id"],
+                            code=gemini_code,
+                            sample_testcase=daily.get("sample_testcase", ""),
+                            lang_slug=args.lang
+                        )
+                        gemini_run_verdict = lc_client.check_submission_status(run_id)
+                        gemini_passed = gemini_run_verdict.get("total_correct", 0) or 0
+                        gemini_total = gemini_run_verdict.get("total_testcases", 0) or 0
+                        log_info(f"Gemini Test Run: {gemini_passed}/{gemini_total} testcases passed. Status: {gemini_run_verdict.get('status_msg')}")
+                    except Exception as e:
+                        log_error(f"Gemini test run failed: {str(e)}")
+
+                # Test Groq
+                if groq_code:
+                    try:
+                        if gemini_code:
+                            log_info("Sleeping 5 seconds before running Groq test to avoid rate limits...")
+                            import time
+                            time.sleep(5)
+                        log_info("Testing Groq solution against sample testcases...")
+                        run_id = lc_client.run_solution(
+                            title_slug=daily["slug"],
+                            question_id=daily["id"],
+                            code=groq_code,
+                            sample_testcase=daily.get("sample_testcase", ""),
+                            lang_slug=args.lang
+                        )
+                        groq_run_verdict = lc_client.check_submission_status(run_id)
+                        groq_passed = groq_run_verdict.get("total_correct", 0) or 0
+                        groq_total = groq_run_verdict.get("total_testcases", 0) or 0
+                        log_info(f"Groq Test Run: {groq_passed}/{groq_total} testcases passed. Status: {groq_run_verdict.get('status_msg')}")
+                    except Exception as e:
+                        log_error(f"Groq test run failed: {str(e)}")
+
             if args.dry_run:
                 log_success("Dry-run complete! Skipping submission to LeetCode.")
                 break
@@ -144,41 +193,71 @@ def main():
             gemini_verdict = None
             groq_verdict = None
 
-            # Submit Gemini Solution
-            if gemini_code:
+            # Compare and choose the best one to submit
+            best_model = None
+            if gemini_code and groq_code:
+                g_ratio = gemini_passed / gemini_total if gemini_total > 0 else 0
+                q_ratio = groq_passed / groq_total if groq_total > 0 else 0
+                if g_ratio > q_ratio:
+                    best_model = "Gemini"
+                elif q_ratio > g_ratio:
+                    best_model = "Groq"
+                else:
+                    best_model = "Gemini"  # Tie breaker
+            elif gemini_code:
+                best_model = "Gemini"
+            elif groq_code:
+                best_model = "Groq"
+
+            submitted_model = best_model
+            submitted_code = gemini_code if best_model == "Gemini" else groq_code
+            submitted_verdict = None
+
+            if submitted_code:
                 try:
-                    log_info(f"Submitting Gemini solution to LeetCode for problem '{daily['slug']}'...")
+                    log_info(f"Submitting {submitted_model} solution as the best code...")
                     sub_id = lc_client.submit_solution(
                         title_slug=daily["slug"],
                         question_id=daily["id"],
-                        code=gemini_code,
+                        code=submitted_code,
                         lang_slug=args.lang
                     )
-                    log_info(f"Gemini submission queued with ID: {sub_id}. Waiting for evaluation...")
-                    gemini_verdict = lc_client.check_submission_status(sub_id)
+                    submitted_verdict = lc_client.check_submission_status(sub_id)
+                    if best_model == "Gemini":
+                        gemini_verdict = submitted_verdict
+                    else:
+                        groq_verdict = submitted_verdict
                 except Exception as e:
-                    log_error(f"Gemini submission failed: {str(e)}")
+                    log_error(f"{submitted_model} submission failed: {str(e)}")
 
-            # Submit Groq Solution
-            if groq_code:
+            # Check if accepted, if not, try fallback
+            is_accepted = submitted_verdict and submitted_verdict.get("status_msg") == "Accepted"
+            
+            fallback_model = "Groq" if submitted_model == "Gemini" else "Gemini"
+            fallback_code = groq_code if submitted_model == "Gemini" else gemini_code
+            fallback_verdict = None
+
+            if not is_accepted and fallback_code:
+                log_warning(f"{submitted_model} solution was not accepted. Trying fallback {fallback_model} solution...")
                 try:
-                    if gemini_code:
-                        log_info("Sleeping 10 seconds to avoid LeetCode submission rate limits...")
-                        import time
-                        time.sleep(10)
-                    log_info(f"Submitting Groq solution to LeetCode for problem '{daily['slug']}'...")
+                    log_info("Sleeping 10 seconds before fallback submission to avoid rate limits...")
+                    import time
+                    time.sleep(10)
                     sub_id = lc_client.submit_solution(
                         title_slug=daily["slug"],
                         question_id=daily["id"],
-                        code=groq_code,
+                        code=fallback_code,
                         lang_slug=args.lang
                     )
-                    log_info(f"Groq submission queued with ID: {sub_id}. Waiting for evaluation...")
-                    groq_verdict = lc_client.check_submission_status(sub_id)
+                    fallback_verdict = lc_client.check_submission_status(sub_id)
+                    if fallback_model == "Gemini":
+                        gemini_verdict = fallback_verdict
+                    else:
+                        groq_verdict = fallback_verdict
                 except Exception as e:
-                    log_error(f"Groq submission failed: {str(e)}")
+                    log_error(f"{fallback_model} submission failed: {str(e)}")
 
-            # Evaluate Results
+            # Determine accepted status for loop condition
             gemini_accepted = gemini_verdict and gemini_verdict.get("status_msg") == "Accepted"
             groq_accepted = groq_verdict and groq_verdict.get("status_msg") == "Accepted"
 
@@ -198,7 +277,6 @@ def main():
 
                 report = ""
                 if gemini_accepted and groq_accepted:
-                    # Compare
                     winner = "Gemini" if g_runtime_pct >= q_runtime_pct else "Groq"
                     report = f"""
 [bold green]Both Solvers Succeeded! 🎉[/bold green]
@@ -237,6 +315,10 @@ def main():
                 winner_name = None
                 if gemini_accepted and groq_accepted:
                     winner_name = "Gemini" if g_runtime_pct >= q_runtime_pct else "Groq"
+                elif gemini_accepted:
+                    winner_name = "Gemini"
+                elif groq_accepted:
+                    winner_name = "Groq"
 
                 if not args.dry_run:
                     send_email_report(
@@ -245,6 +327,9 @@ def main():
                         groq_code=groq_code,
                         gemini_verdict=gemini_verdict,
                         groq_verdict=groq_verdict,
+                        gemini_run_verdict=gemini_run_verdict,
+                        groq_run_verdict=groq_run_verdict,
+                        submitted_model=submitted_model,
                         winner=winner_name
                     )
 
@@ -271,6 +356,9 @@ def main():
                 groq_code=groq_code,
                 gemini_verdict=gemini_prev_err,
                 groq_verdict=groq_prev_err,
+                gemini_run_verdict=gemini_run_verdict,
+                groq_run_verdict=groq_run_verdict,
+                submitted_model=submitted_model,
                 error_message=err_msg
             )
             log_error(err_msg)

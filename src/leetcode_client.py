@@ -136,6 +136,43 @@ class LeetCodeClient:
             "tags": [t["name"] for t in question.get("topicTags", [])]
         }
 
+    def run_solution(self, title_slug: str, question_id: str, code: str, sample_testcase: str, lang_slug: str = "python3") -> str:
+        """Runs the code solution on LeetCode without submitting to user profile history."""
+        if not self.session_cookie or not self.csrf_token:
+            raise ValueError("LEETCODE_SESSION and LEETCODE_CSRF_TOKEN must be configured to run solutions.")
+
+        run_url = f"{self.BASE_URL}/problems/{title_slug}/interpret_solution/"
+        headers = self.headers.copy()
+        headers["Referer"] = f"{self.BASE_URL}/problems/{title_slug}/"
+        headers["x-csrftoken"] = self.csrf_token
+
+        payload = {
+            "lang": lang_slug,
+            "question_id": question_id,
+            "typed_code": code,
+            "data_input": sample_testcase
+        }
+
+        response = requests.post(
+            run_url,
+            json=payload,
+            headers=headers,
+            cookies=self.cookies,
+            timeout=20
+        )
+        
+        if response.status_code == 403 or response.status_code == 401:
+            raise PermissionError("LeetCode authentication failed. Please verify that your LEETCODE_SESSION and LEETCODE_CSRF_TOKEN cookies are valid and not expired.")
+        
+        response.raise_for_status()
+        res_data = response.json()
+        interpret_id = res_data.get("interpret_id")
+        
+        if not interpret_id:
+            raise ValueError(f"Run failed or was rejected. LeetCode response: {res_data}")
+            
+        return str(interpret_id)
+
     def submit_solution(self, title_slug: str, question_id: str, code: str, lang_slug: str = "python3") -> str:
         """Submits the code solution to LeetCode."""
         if not self.session_cookie or not self.csrf_token:
