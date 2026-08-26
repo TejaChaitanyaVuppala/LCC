@@ -1,6 +1,7 @@
 import time
+import random
 import requests
-from typing import Dict, Any, Optional
+from typing import Dict, Any, Optional, List, Set
 from src.logger import log_info, log_error, log_warning, log_success
 
 class LeetCodeClient:
@@ -234,3 +235,137 @@ class LeetCodeClient:
                 log_warning(f"Unexpected evaluation state: {state}")
                 
         raise TimeoutError(f"Submission status polling timed out after {timeout_seconds} seconds.")
+
+    def get_problemset_questions(
+        self,
+        category_slug: str = "",
+        limit: int = 50,
+        skip: int = 0,
+        difficulty: Optional[str] = None,
+        tags: Optional[List[str]] = None,
+        search_keyword: Optional[str] = None
+    ) -> List[Dict[str, Any]]:
+        """Queries LeetCode problemset question list with filters."""
+        query = """
+        query problemsetQuestionList($categorySlug: String, $limit: Int, $skip: Int, $filters: QuestionListFilterInput) {
+            problemsetQuestionList: questionList(
+                categorySlug: $categorySlug
+                limit: $limit
+                skip: $skip
+                filters: $filters
+            ) {
+                total: totalNum
+                questions: data {
+                    frontendQuestionId: questionFrontendId
+                    title
+                    titleSlug
+                    difficulty
+                    paidOnly: isPaidOnly
+                    acRate
+                    topicTags {
+                        name
+                        slug
+                    }
+                }
+            }
+        }
+        """
+        filters: Dict[str, Any] = {}
+        if difficulty and difficulty.upper() in ["EASY", "MEDIUM", "HARD"]:
+            filters["difficulty"] = difficulty.upper()
+        if tags:
+            filters["tags"] = tags
+        if search_keyword:
+            filters["searchKeywords"] = search_keyword
+
+        variables = {
+            "categorySlug": category_slug,
+            "limit": limit,
+            "skip": skip,
+            "filters": filters
+        }
+
+        response = requests.post(
+            self.GRAPHQL_URL,
+            json={"query": query, "variables": variables},
+            headers=self.headers,
+            cookies=self.cookies,
+            timeout=20
+        )
+        response.raise_for_status()
+        data = response.json()
+        
+        q_data = data.get("data", {}).get("problemsetQuestionList", {})
+        return q_data.get("questions", [])
+
+    def get_unsolved_problem(
+        self,
+        difficulty: Optional[str] = None,
+        tags: Optional[List[str]] = None,
+        exclude_slugs: Optional[Set[str]] = None,
+        category_slug: str = "algorithms",
+        lang: str = "python3",
+        max_search_pages: int = 5
+    ) -> Dict[str, Any]:
+        """Finds and returns a random unsolved, non-paid problem with valid starter code."""
+        exclude_set = set(exclude_slugs) if exclude_slugs else set()
+        
+        # If difficulty is RANDOM or not set, pick randomly weighted towards Medium/Easy
+        diff_target = difficulty.upper() if difficulty and difficulty.upper() in ["EASY", "MEDIUM", "HARD"] else None
+        if not diff_target:
+            diff_target = random.choice(["EASY", "MEDIUM", "MEDIUM", "EASY"])
+
+        log_info(f"Searching for an unsolved {diff_target} algorithmic problem...")
+
+        candidate_questions: List[Dict[str, Any]] = []
+
+        # Try random skip offsets to get varied questions
+        for page in range(max_search_pages):
+            skip = random.randint(0, 15) * 40
+            try:
+                questions = self.get_problemset_questions(
+                    category_slug=category_slug,
+                    limit=50,
+                    skip=skip,
+                    difficulty=diff_target,
+                    tags=tags
+                )
+                
+                # Filter out paid-only and already solved
+                valid = [
+                    q for q in questions
+                    if not q.get("paidOnly", False) and q.get("titleSlug") not in exclude_set
+                ]
+                candidate_questions.extend(valid)
+                if len(candidate_questions) >= 15:
+                    break
+            except Exception as e:
+                log_warning(f"Problem search page {page+1} error: {e}")
+
+        if not candidate_questions:
+            # Fallback: query without skip
+            questions = self.get_problemset_questions(category_slug=category_slug, limit=100, difficulty=diff_target)
+            candidate_questions = [
+                q for q in questions
+                if not q.get("paidOnly", False) and q.get("titleSlug") not in exclude_set
+            ]
+
+        if not candidate_questions:
+            raise ValueError(f"Could not find any available unsolved {diff_target} problem on LeetCode.")
+
+        # Shuffle candidates and find one that has the required snippet
+        random.shuffle(candidate_questions)
+        for candidate in candidate_questions:
+            slug = candidate["titleSlug"]
+            try:
+                detail = self.get_question_detail(slug)
+                snippets = detail.get("snippets", {})
+                if lang in snippets or "python3" in snippets or "python" in snippets:
+                    log_info(f"Selected candidate problem: #{detail.get('frontend_id')} - {detail.get('title')} ({detail.get('difficulty')})")
+                    return detail
+            except Exception as e:
+                log_warning(f"Failed to load details for candidate {slug}: {e}")
+
+        raise ValueError(f"Could not find an unsolved {diff_target} problem with code snippet for '{lang}'.")
+
+

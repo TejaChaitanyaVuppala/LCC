@@ -1,16 +1,31 @@
-# 🔥 Autonomous LeetCode Daily Streak Bot
+# 🔥 Autonomous LeetCode Daily Streak & Multi-Problem Bot
 
-An autonomous bot that fetches the official LeetCode Daily Challenge every day, solves it using **Gemini AI**, submits the solution directly to your LeetCode account, and maintains your streak 24/7 via **GitHub Actions** (or locally).
+An autonomous bot that fetches the official LeetCode Daily Challenge plus **5 additional problems per day distributed at different times of the day**, solves them using dual AI solvers (**Gemini 2.5 Flash** and **Groq LLaMA 3.3 70B**), submits the best solution directly to your LeetCode account, sends email reports via Resend, and tracks your daily progress 24/7 via **GitHub Actions** (or locally).
 
 ---
 
 ## ✨ Features
 
-- **Automated Daily Challenge Fetcher**: Pulls the daily problem details, constraints, tags, and function templates using LeetCode's GraphQL API.
-- **Smart AI Solver (Gemini 2.5 Flash)**: Generates optimal, bug-free solutions matching the exact LeetCode class & method signature.
-- **Self-Healing Error Correction**: If LeetCode rejects a solution (Wrong Answer, Runtime Error, TLE), the error and failed test case are fed back into Gemini to fix the code automatically (up to 3 retries).
-- **Zero-Maintenance Cloud Automation**: Configured with a GitHub Actions cron schedule to run every day at `01:30 AM UTC` for free without leaving your PC turned on.
-- **Dry-Run Mode**: Test solving problems without submitting.
+- **Problem of the Day (POTD) + 5 Extra Problems/Day**:
+  - Automatically solves the official LeetCode Daily Challenge.
+  - Automatically selects 5 unsolved problems spread across different times of the day.
+- **Dual AI Solver Competition**:
+  - Runs **Gemini** and **Groq** simultaneously on each problem.
+  - Compares testcase pass rates and runtime/memory percentiles.
+  - Automatically submits the best performing code with auto-fallback.
+- **Distributed Scheduling (6 Runs / Day)**:
+  - **01:30 UTC** (07:00 AM IST) -> **Problem of the Day (POTD)**
+  - **05:00 UTC** (10:30 AM IST) -> **Extra Problem #1**
+  - **09:00 UTC** (02:30 PM IST) -> **Extra Problem #2**
+  - **13:00 UTC** (06:30 PM IST) -> **Extra Problem #3**
+  - **16:30 UTC** (10:00 PM IST) -> **Extra Problem #4**
+  - **20:00 UTC** (01:30 AM IST) -> **Extra Problem #5**
+- **Smart Duplicate Prevention**:
+  - Tracks solved problem history in `solved_history.json` to ensure problems are never repeated.
+- **Self-Healing Auto-Retry**:
+  - If a submission fails (Wrong Answer, TLE, etc.), feedback is fed back to the AI for automatic correction (up to 3 retries).
+- **Email Reports via Resend**:
+  - Receives rich HTML email notifications showing problem details, runtime/memory percentiles, AI winner, code, and daily count.
 
 ---
 
@@ -18,19 +33,18 @@ An autonomous bot that fetches the official LeetCode Daily Challenge every day, 
 
 ### 1. LeetCode Cookies (`LEETCODE_SESSION` & `LEETCODE_CSRF_TOKEN`)
 1. Open [leetcode.com](https://leetcode.com) in your browser and log into your account.
-2. Press `F12` (or Right-Click -> **Inspect**) to open Browser Developer Tools.
-3. Go to the **Application** tab (in Chrome/Edge/Brave) or **Storage** tab (in Firefox).
-4. In the left sidebar, expand **Cookies** and click on `https://leetcode.com`.
-5. Locate and copy the values for:
-   - `LEETCODE_SESSION` (long token string)
-   - `csrftoken` (value for `LEETCODE_CSRF_TOKEN`)
-
-> [!NOTE]
-> LeetCode session cookies typically stay valid for several months unless you explicitly click "Log Out".
+2. Press `F12` (or Right-Click -> **Inspect**) to open Developer Tools.
+3. Go to **Application** -> **Cookies** -> `https://leetcode.com`.
+4. Copy `LEETCODE_SESSION` and `csrftoken` (value for `LEETCODE_CSRF_TOKEN`).
 
 ### 2. Gemini API Key (`GEMINI_API_KEY`)
-1. Go to [Google AI Studio](https://aistudio.google.com/).
-2. Click **Get API Key** and create a free key.
+- Get a free key from [Google AI Studio](https://aistudio.google.com/).
+
+### 3. Groq API Key (`GROQ_API_KEY`)
+- Get a free key from [Groq Console](https://console.groq.com/).
+
+### 4. Resend API Key (`RESEND_API_KEY`) (Optional for Email)
+- Get an API key from [Resend](https://resend.com/).
 
 ---
 
@@ -41,67 +55,72 @@ An autonomous bot that fetches the official LeetCode Daily Challenge every day, 
    pip install -r requirements.txt
    ```
 
-2. **Set up your environment variables**:
-   Create a `.env` file from the template:
+2. **Set up `.env`**:
    ```bash
    cp .env.example .env
    ```
-   Fill in your `.env` values:
-   ```env
-   LEETCODE_SESSION=your_leetcode_session_cookie
-   LEETCODE_CSRF_TOKEN=your_csrftoken_cookie
-   GEMINI_API_KEY=your_gemini_api_key
-   GEMINI_MODEL=gemini-2.5-flash
-   PROGRAMMING_LANGUAGE=python3
-   ```
+   Fill in your `.env` variables with your cookies and API keys.
 
-3. **Run the bot**:
+3. **CLI Usage Options**:
    ```bash
-   # Test in dry-run mode (solves without submitting to LeetCode)
-   python main.py --dry-run
+   # 1. Solve today's Problem of the Day (POTD)
+   python main.py --mode potd
 
-   # Run for real (solves and submits to LeetCode)
-   python main.py
+   # 2. Solve a single extra unsolved problem (e.g. Medium difficulty)
+   python main.py --mode extra --difficulty MEDIUM
+
+   # 3. Solve 5 problems at once in batch mode
+   python main.py --mode batch --count 5 --difficulty RANDOM
+
+   # 4. Filter by specific topic tag
+   python main.py --mode extra --tag dynamic-programming
+
+   # 5. Solve a specific problem slug
+   python main.py --slug two-sum
+
+   # 6. Test with dry-run (does not submit to LeetCode)
+   python main.py --dry-run
    ```
 
 ---
 
-## ☁️ Step 3: 24/7 Cloud Automation with GitHub Actions (Recommended)
+## ☁️ Step 3: 24/7 Cloud Automation with GitHub Actions
 
-You can run this completely in the cloud every day for free so your streak never breaks:
+The repository includes [`.github/workflows/daily_streak.yml`](.github/workflows/daily_streak.yml) configured with 6 distributed daily cron triggers.
 
-1. **Create a new Private GitHub Repository**:
-   - Go to [GitHub -> New Repository](https://github.com/new).
-   - Set the repository visibility to **Private** (to protect your code & actions).
-
-2. **Push this project to your repository**:
+1. **Push your code to a private GitHub repository**:
    ```bash
    git init
    git add .
-   git commit -m "feat: setup leetcode daily streak bot"
+   git commit -m "feat: setup leetcode streak and multi-problem bot"
    git branch -M main
    git remote add origin https://github.com/<your-username>/<repo-name>.git
    git push -u origin main
    ```
 
-3. **Add your Secrets to GitHub**:
-   - In your GitHub repo, go to **Settings** -> **Secrets and variables** -> **Actions**.
-   - Click **New repository secret** and add the following:
-     - `LEETCODE_SESSION`: Your session cookie
-     - `LEETCODE_CSRF_TOKEN`: Your `csrftoken` cookie
-     - `GEMINI_API_KEY`: Your Gemini API key
+2. **Add GitHub Secrets**:
+   Go to **Settings** -> **Secrets and variables** -> **Actions** -> **New repository secret**:
+   - `LEETCODE_SESSION`
+   - `LEETCODE_CSRF_TOKEN`
+   - `GEMINI_API_KEY`
+   - `GROQ_API_KEY`
+   - `RESEND_API_KEY` (Optional)
+   - `TO_EMAIL` (Optional)
 
-4. **Done!**
-   - The workflow located at [`.github/workflows/daily_streak.yml`](.github/workflows/daily_streak.yml) will trigger automatically every day at `01:30 AM UTC`.
-   - You can also test it immediately by going to **Actions** -> **LeetCode Daily Streak Bot** -> **Run workflow**.
+3. **Trigger Manually Anytime**:
+   - Go to **Actions** -> **LeetCode Daily Streak & Multi-Problem Bot** -> **Run workflow**.
+   - Select mode (`potd`, `extra`, `batch`) and difficulty.
 
 ---
 
-## ⚙️ Configuration Options
+## ⚙️ Configuration Reference
 
 | Option | Environment Variable | CLI Argument | Default | Description |
 |---|---|---|---|---|
-| Language | `PROGRAMMING_LANGUAGE` | `--lang` | `python3` | Language to solve (`python3`, `cpp`, `java`, `golang`) |
-| Model | `GEMINI_MODEL` | - | `gemini-2.5-flash` | Gemini model to use |
+| Mode | `SOLVER_MODE` | `--mode` | `potd` | `potd` (Daily Challenge), `extra` (Single Extra), `batch` (Multiple) |
+| Problem Count | `PROBLEM_COUNT` | `--count` | `1` | Number of problems for batch/extra runs |
+| Difficulty | `EXTRA_PROBLEM_DIFFICULTY` | `--difficulty` | `RANDOM` | `EASY`, `MEDIUM`, `HARD`, or `RANDOM` |
+| Tag | `PROBLEM_TAG` | `--tag` | None | Filter extra problems by topic (e.g. `tree`, `dp`) |
+| Language | `PROGRAMMING_LANGUAGE` | `--lang` | `python3` | Language to solve (`python3`, `cpp`, `java`, etc.) |
 | Max Retries | - | `--max-retries` | `3` | Number of auto-retry attempts if not Accepted |
 | Dry Run | - | `--dry-run` | `False` | Run solver without submitting to LeetCode |

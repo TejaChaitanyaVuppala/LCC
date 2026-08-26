@@ -1,0 +1,65 @@
+{
+  "solved_problems": {
+    "shortest-and-lexicographically-smallest-beautiful-string": {
+      "title": "Shortest and Lexicographically Smallest Beautiful String",
+      "frontend_id": "2904",
+      "difficulty": "Medium",
+      "mode": "potd",
+      "solved_at": "2026-08-26T16:03:09.597622",
+      "date": "2026-08-26",
+      "winner_model": "Gemini"
+    },
+    "reverse-linked-list": {
+      "title": "Reverse Linked List",
+      "frontend_id": "206",
+      "difficulty": "Easy",
+      "mode": "extra",
+      "solved_at": "2026-08-26T16:07:59.899699",
+      "date": "2026-08-26",
+      "winner_model": "Gemini"
+    },
+    "combination-sum": {
+      "title": "Combination Sum",
+      "frontend_id": "39",
+      "difficulty": "Medium",
+      "mode": "extra",
+      "solved_at": "2026-08-26T16:08:52.450257",
+      "date": "2026-08-26",
+      "winner_model": "Gemini"
+    },
+    "best-poker-hand": {
+      "title": "Best Poker Hand",
+      "frontend_id": "2347",
+      "difficulty": "Easy",
+      "mode": "extra",
+      "solved_at": "2026-08-26T16:09:36.091446",
+      "date": "2026-08-26",
+      "winner_model": "Gemini"
+    },
+    "k-diff-pairs-in-an-array": {
+      "title": "K-diff Pairs in an Array",
+      "frontend_id": "532",
+      "difficulty": "Medium",
+      "mode": "extra",
+      "solved_at": "2026-08-26T16:10:18.550221",
+      "date": "2026-08-26",
+      "winner_model": "Gemini"
+    },
+    "spiral-matrix": {
+      "title": "Spiral Matrix",
+      "frontend_id": "54",
+      "difficulty": "Medium",
+      "mode": "extra",
+      "solved_at": "2026-08-26T16:11:01.516378",
+      "date": "2026-08-26",
+      "winner_model": "Gemini"
+    }
+  },
+  "daily_counts": {
+    "2026-08-26": {
+      "potd": 1,
+      "extra": 5,
+      "total": 6
+    }
+  }
+}

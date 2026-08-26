@@ -1,19 +1,64 @@
-name: LeetCode Daily Streak Bot
+name: LeetCode Daily Streak & Multi-Problem Bot
 
 on:
   schedule:
-    # Runs at 01:30 AM UTC everyday (LeetCode resets at 00:00 UTC)
+    # 1. 01:30 UTC -> Problem of the Day (07:00 AM IST)
     - cron: '30 1 * * *'
-  workflow_dispatch: # Allows manual trigger from GitHub UI anytime
+    # 2. 05:00 UTC -> Extra Problem #1 (10:30 AM IST)
+    - cron: '0 5 * * *'
+    # 3. 09:00 UTC -> Extra Problem #2 (02:30 PM IST)
+    - cron: '0 9 * * *'
+    # 4. 13:00 UTC -> Extra Problem #3 (06:30 PM IST)
+    - cron: '0 13 * * *'
+    # 5. 16:30 UTC -> Extra Problem #4 (10:00 PM IST)
+    - cron: '30 16 * * *'
+    # 6. 20:00 UTC -> Extra Problem #5 (01:30 AM IST)
+    - cron: '0 20 * * *'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Problem Solving Mode'
+        required: true
+        default: 'potd'
+        type: choice
+        options:
+          - potd
+          - extra
+          - batch
+      extra_index:
+        description: 'Extra problem index (1-5, optional)'
+        required: false
+        default: ''
+        type: string
+      difficulty:
+        description: 'Difficulty filter'
+        required: false
+        default: 'RANDOM'
+        type: choice
+        options:
+          - RANDOM
+          - EASY
+          - MEDIUM
+          - HARD
+      problem_count:
+        description: 'Problem count for batch mode'
+        required: false
+        default: '5'
+        type: string
+
+permissions:
+  contents: write
 
 jobs:
-  solve-daily-challenge:
+  solve-leetcode:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -26,17 +71,73 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run LeetCode Streak Solver
+      - name: Determine Run Mode & Parameters
+        id: params
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "mode=${{ github.event.inputs.mode }}" >> $GITHUB_OUTPUT
+            echo "difficulty=${{ github.event.inputs.difficulty }}" >> $GITHUB_OUTPUT
+            echo "extra_index=${{ github.event.inputs.extra_index }}" >> $GITHUB_OUTPUT
+            echo "problem_count=${{ github.event.inputs.problem_count }}" >> $GITHUB_OUTPUT
+          else
+            CURRENT_HOUR=$(date -u +%H)
+            echo "Current UTC hour is: $CURRENT_HOUR"
+            if [ "$CURRENT_HOUR" -le 2 ]; then
+              echo "mode=potd" >> $GITHUB_OUTPUT
+              echo "extra_index=" >> $GITHUB_OUTPUT
+            elif [ "$CURRENT_HOUR" -le 6 ]; then
+              echo "mode=extra" >> $GITHUB_OUTPUT
+              echo "extra_index=1" >> $GITHUB_OUTPUT
+            elif [ "$CURRENT_HOUR" -le 10 ]; then
+              echo "mode=extra" >> $GITHUB_OUTPUT
+              echo "extra_index=2" >> $GITHUB_OUTPUT
+            elif [ "$CURRENT_HOUR" -le 14 ]; then
+              echo "mode=extra" >> $GITHUB_OUTPUT
+              echo "extra_index=3" >> $GITHUB_OUTPUT
+            elif [ "$CURRENT_HOUR" -le 18 ]; then
+              echo "mode=extra" >> $GITHUB_OUTPUT
+              echo "extra_index=4" >> $GITHUB_OUTPUT
+            else
+              echo "mode=extra" >> $GITHUB_OUTPUT
+              echo "extra_index=5" >> $GITHUB_OUTPUT
+            fi
+            echo "difficulty=RANDOM" >> $GITHUB_OUTPUT
+            echo "problem_count=1" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Run LeetCode Solver
         env:
           LEETCODE_SESSION: ${{ secrets.LEETCODE_SESSION }}
           LEETCODE_CSRF_TOKEN: ${{ secrets.LEETCODE_CSRF_TOKEN }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          GEMINI_MODEL: "gemini-3.6-flash"
+          GEMINI_MODEL: "gemini-2.5-flash"
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-          GROQ_MODEL: "qwen/qwen3.6-27b"
+          GROQ_MODEL: "llama-3.3-70b-versatile"
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           TO_EMAIL: ${{ secrets.TO_EMAIL }}
           FROM_EMAIL: "LeetCode Bot <onboarding@resend.dev>"
           PROGRAMMING_LANGUAGE: "python3"
         run: |
-          python main.py
+          EXTRA_FLAG=""
+          if [ -n "${{ steps.params.outputs.extra_index }}" ]; then
+            EXTRA_FLAG="--extra-index ${{ steps.params.outputs.extra_index }}"
+          fi
+          
+          python main.py \
+            --mode ${{ steps.params.outputs.mode }} \
+            --difficulty ${{ steps.params.outputs.difficulty }} \
+            --count ${{ steps.params.outputs.problem_count }} \
+            $EXTRA_FLAG
+
+      - name: Persist Solved History
+        if: always()
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin main || true
+          if [ -f "solved_history.json" ]; then
+            git add solved_history.json
+            git diff --staged --quiet || git commit -m "Update solved_history.json [skip ci]"
+            git push origin HEAD:main || true
+          fi
