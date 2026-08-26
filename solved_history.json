@@ -71,13 +71,22 @@
       "solved_at": "2026-08-26T13:44:36.212786",
       "date": "2026-08-26",
       "winner_model": "Gemini"
+    },
+    "heaters": {
+      "title": "Heaters",
+      "frontend_id": "475",
+      "difficulty": "Medium",
+      "mode": "extra",
+      "solved_at": "2026-08-26T16:32:16.417781",
+      "date": "2026-08-26",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
     "2026-08-26": {
       "potd": 1,
-      "extra": 7,
-      "total": 8
+      "extra": 8,
+      "total": 9
     }
   }
 }
