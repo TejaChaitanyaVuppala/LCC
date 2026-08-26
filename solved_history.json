@@ -89,13 +89,22 @@
       "solved_at": "2026-08-26T18:14:15.111799",
       "date": "2026-08-26",
       "winner_model": "Gemini"
+    },
+    "add-digits": {
+      "title": "Add Digits",
+      "frontend_id": "258",
+      "difficulty": "Easy",
+      "mode": "extra",
+      "solved_at": "2026-08-26T22:45:51.058464",
+      "date": "2026-08-26",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
     "2026-08-26": {
       "potd": 1,
-      "extra": 9,
-      "total": 10
+      "extra": 10,
+      "total": 11
     }
   }
 }
