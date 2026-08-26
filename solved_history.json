@@ -53,13 +53,22 @@
       "solved_at": "2026-08-26T16:11:01.516378",
       "date": "2026-08-26",
       "winner_model": "Gemini"
+    },
+    "decode-string": {
+      "title": "Decode String",
+      "frontend_id": "394",
+      "difficulty": "Medium",
+      "mode": "extra",
+      "solved_at": "2026-08-26T11:18:26.881567",
+      "date": "2026-08-26",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
     "2026-08-26": {
       "potd": 1,
-      "extra": 5,
-      "total": 6
+      "extra": 6,
+      "total": 7
     }
   }
 }
