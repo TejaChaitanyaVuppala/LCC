@@ -11,19 +11,25 @@ class LeetCodeClient:
     def __init__(self, session_cookie: Optional[str] = None, csrf_token: Optional[str] = None):
         self.session_cookie = session_cookie
         self.csrf_token = csrf_token
+        self.session = requests.Session()
         self.headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
             "Content-Type": "application/json",
             "Referer": "https://leetcode.com",
             "Origin": "https://leetcode.com",
+            "Accept": "*/*",
         }
+        self.session.headers.update(self.headers)
         
         self.cookies = {}
         if self.session_cookie:
             self.cookies["LEETCODE_SESSION"] = self.session_cookie
+            self.session.cookies.set("LEETCODE_SESSION", self.session_cookie, domain=".leetcode.com")
         if self.csrf_token:
             self.cookies["csrftoken"] = self.csrf_token
             self.headers["x-csrftoken"] = self.csrf_token
+            self.session.headers.update({"x-csrftoken": self.csrf_token})
+            self.session.cookies.set("csrftoken", self.csrf_token, domain=".leetcode.com")
 
     def get_daily_challenge(self) -> Dict[str, Any]:
         """Fetches the official Daily Coding Challenge from LeetCode GraphQL."""
@@ -54,7 +60,7 @@ class LeetCodeClient:
             }
         }
         """
-        response = requests.post(
+        response = self.session.post(
             self.GRAPHQL_URL,
             json={"query": query},
             headers=self.headers,
@@ -108,7 +114,7 @@ class LeetCodeClient:
             }
         }
         """
-        response = requests.post(
+        response = self.session.post(
             self.GRAPHQL_URL,
             json={"query": query, "variables": {"titleSlug": title_slug}},
             headers=self.headers,
@@ -154,7 +160,7 @@ class LeetCodeClient:
             "data_input": sample_testcase
         }
 
-        response = requests.post(
+        response = self.session.post(
             run_url,
             json=payload,
             headers=headers,
@@ -190,7 +196,7 @@ class LeetCodeClient:
             "typed_code": code
         }
 
-        response = requests.post(
+        response = self.session.post(
             submit_url,
             json=payload,
             headers=headers,
@@ -217,7 +223,7 @@ class LeetCodeClient:
         
         while time.time() - start_time < timeout_seconds:
             time.sleep(2)
-            response = requests.get(
+            response = self.session.get(
                 check_url,
                 headers=self.headers,
                 cookies=self.cookies,
@@ -285,7 +291,7 @@ class LeetCodeClient:
             "filters": filters
         }
 
-        response = requests.post(
+        response = self.session.post(
             self.GRAPHQL_URL,
             json={"query": query, "variables": variables},
             headers=self.headers,

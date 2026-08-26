@@ -344,10 +344,10 @@ def main():
     csrf_token = os.getenv("LEETCODE_CSRF_TOKEN")
     
     gemini_api_key = os.getenv("GEMINI_API_KEY")
-    gemini_model = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+    gemini_model = os.getenv("GEMINI_MODEL", "gemini-3.6-flash")
     
     groq_api_key = os.getenv("GROQ_API_KEY")
-    groq_model = os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile")
+    groq_model = os.getenv("GROQ_MODEL", "qwen/qwen3.6-27b")
 
     if not gemini_api_key and not groq_api_key:
         log_error("Neither GEMINI_API_KEY nor GROQ_API_KEY is set in environment or .env file.")
