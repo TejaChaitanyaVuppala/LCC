@@ -80,13 +80,22 @@
       "solved_at": "2026-08-26T16:32:16.417781",
       "date": "2026-08-26",
       "winner_model": "Gemini"
+    },
+    "find-all-k-distant-indices-in-an-array": {
+      "title": "Find All K-Distant Indices in an Array",
+      "frontend_id": "2200",
+      "difficulty": "Easy",
+      "mode": "extra",
+      "solved_at": "2026-08-26T18:14:15.111799",
+      "date": "2026-08-26",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
     "2026-08-26": {
       "potd": 1,
-      "extra": 8,
-      "total": 9
+      "extra": 9,
+      "total": 10
     }
   }
 }
