@@ -62,13 +62,22 @@
       "solved_at": "2026-08-26T11:18:26.881567",
       "date": "2026-08-26",
       "winner_model": "Gemini"
+    },
+    "reverse-only-letters": {
+      "title": "Reverse Only Letters",
+      "frontend_id": "917",
+      "difficulty": "Easy",
+      "mode": "extra",
+      "solved_at": "2026-08-26T13:44:36.212786",
+      "date": "2026-08-26",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
     "2026-08-26": {
       "potd": 1,
-      "extra": 6,
-      "total": 7
+      "extra": 7,
+      "total": 8
     }
   }
 }
