@@ -1,19 +1,7 @@
 name: LeetCode Daily Streak & Multi-Problem Bot
 
+# Triggered via external scheduler (cron-job.org) using workflow_dispatch API
 on:
-  schedule:
-    # 1. 07:00 AM IST (01:30 UTC) -> Problem of the Day (POTD)
-    - cron: '30 1 * * *'
-    # 2. 10:30 AM IST (05:00 UTC) -> Extra Problem #1
-    - cron: '0 5 * * *'
-    # 3. 02:30 PM IST (09:00 UTC) -> Extra Problem #2
-    - cron: '0 9 * * *'
-    # 4. 06:30 PM IST (13:00 UTC) -> Extra Problem #3
-    - cron: '0 13 * * *'
-    # 5. 10:00 PM IST (16:30 UTC) -> Extra Problem #4
-    - cron: '30 16 * * *'
-    # 6. 01:30 AM IST (20:00 UTC) -> Extra Problem #5
-    - cron: '0 20 * * *'
   workflow_dispatch:
     inputs:
       mode:
