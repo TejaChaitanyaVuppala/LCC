@@ -161,6 +161,15 @@
       "solved_at": "2026-08-27T17:49:09.652524+05:30",
       "date": "2026-08-27",
       "winner_model": "Gemini"
+    },
+    "kth-smallest-element-in-a-sorted-matrix": {
+      "title": "Kth Smallest Element in a Sorted Matrix",
+      "frontend_id": "378",
+      "difficulty": "Medium",
+      "mode": "extra",
+      "solved_at": "2026-08-27T20:07:24.159134+05:30",
+      "date": "2026-08-27",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -171,8 +180,8 @@
     },
     "2026-08-27": {
       "potd": 3,
-      "extra": 6,
-      "total": 9
+      "extra": 7,
+      "total": 10
     }
   }
 }
