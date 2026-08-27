@@ -1,8 +1,22 @@
 import os
 import json
-from datetime import datetime, date
+from datetime import datetime, date, timezone, timedelta
 from typing import Dict, Any, List, Set, Optional
 from src.logger import log_info, log_warning
+
+try:
+    from zoneinfo import ZoneInfo
+    IST_TZ = ZoneInfo("Asia/Kolkata")
+except Exception:
+    IST_TZ = timezone(timedelta(hours=5, minutes=30))
+
+def get_ist_now() -> datetime:
+    """Returns current datetime in Indian Standard Time (IST)."""
+    return datetime.now(IST_TZ)
+
+def get_ist_today_str() -> str:
+    """Returns today's date string (YYYY-MM-DD) in Indian Standard Time (IST)."""
+    return get_ist_now().date().isoformat()
 
 DEFAULT_HISTORY_FILE = "solved_history.json"
 
@@ -47,8 +61,8 @@ class HistoryTracker:
         winner_model: Optional[str] = None
     ) -> None:
         """Records a successfully solved problem."""
-        today_str = date.today().isoformat()
-        now_str = datetime.now().isoformat()
+        today_str = get_ist_today_str()
+        now_str = get_ist_now().isoformat()
 
         if "solved_problems" not in self.data:
             self.data["solved_problems"] = {}
@@ -75,9 +89,9 @@ class HistoryTracker:
         self.data["daily_counts"][today_str] = daily_record
 
         self.save()
-        log_info(f"Recorded problem '{title_slug}' in history. Total solved today: {daily_record['total']}")
+        log_info(f"Recorded problem '{title_slug}' in history. Total solved today (IST): {daily_record['total']}")
 
     def get_today_progress(self) -> Dict[str, int]:
-        """Returns statistics for problems solved today."""
-        today_str = date.today().isoformat()
+        """Returns statistics for problems solved today in IST."""
+        today_str = get_ist_today_str()
         return self.data.get("daily_counts", {}).get(today_str, {"potd": 0, "extra": 0, "total": 0})

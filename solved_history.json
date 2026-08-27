@@ -134,6 +134,15 @@
       "solved_at": "2026-08-27T11:37:00.445687",
       "date": "2026-08-27",
       "winner_model": "Gemini"
+    },
+    "mirror-reflection": {
+      "title": "Mirror Reflection",
+      "frontend_id": "858",
+      "difficulty": "Medium",
+      "mode": "extra",
+      "solved_at": "2026-08-27T17:33:08.621014+05:30",
+      "date": "2026-08-27",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -144,8 +153,8 @@
     },
     "2026-08-27": {
       "potd": 1,
-      "extra": 3,
-      "total": 4
+      "extra": 4,
+      "total": 5
     }
   }
 }

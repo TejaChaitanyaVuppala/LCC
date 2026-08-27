@@ -14,12 +14,12 @@ An autonomous bot that fetches the official LeetCode Daily Challenge plus **5 ad
   - Compares testcase pass rates and runtime/memory percentiles.
   - Automatically submits the best performing code with auto-fallback.
 - **Distributed Scheduling (6 Runs / Day)**:
-  - **01:30 UTC** (07:00 AM IST) -> **Problem of the Day (POTD)**
-  - **05:00 UTC** (10:30 AM IST) -> **Extra Problem #1**
-  - **09:00 UTC** (02:30 PM IST) -> **Extra Problem #2**
-  - **13:00 UTC** (06:30 PM IST) -> **Extra Problem #3**
-  - **16:30 UTC** (10:00 PM IST) -> **Extra Problem #4**
-  - **20:00 UTC** (01:30 AM IST) -> **Extra Problem #5**
+  - **07:00 AM IST** (01:30 UTC) -> **Problem of the Day (POTD)**
+  - **10:30 AM IST** (05:00 UTC) -> **Extra Problem #1**
+  - **02:30 PM IST** (09:00 UTC) -> **Extra Problem #2**
+  - **06:30 PM IST** (13:00 UTC) -> **Extra Problem #3**
+  - **10:00 PM IST** (16:30 UTC) -> **Extra Problem #4**
+  - **01:30 AM IST** (20:00 UTC) -> **Extra Problem #5**
 - **Smart Duplicate Prevention**:
   - Tracks solved problem history in `solved_history.json` to ensure problems are never repeated.
 - **Self-Healing Auto-Retry**:
