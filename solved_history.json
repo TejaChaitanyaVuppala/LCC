@@ -152,6 +152,15 @@
       "solved_at": "2026-08-27T17:38:44.527299+05:30",
       "date": "2026-08-27",
       "winner_model": "Gemini"
+    },
+    "bitwise-and-of-numbers-range": {
+      "title": "Bitwise AND of Numbers Range",
+      "frontend_id": "201",
+      "difficulty": "Medium",
+      "mode": "extra",
+      "solved_at": "2026-08-27T17:49:09.652524+05:30",
+      "date": "2026-08-27",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -162,8 +171,8 @@
     },
     "2026-08-27": {
       "potd": 1,
-      "extra": 5,
-      "total": 6
+      "extra": 6,
+      "total": 7
     }
   }
 }
