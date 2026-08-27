@@ -116,6 +116,15 @@
       "solved_at": "2026-08-27T08:26:11.776176",
       "date": "2026-08-27",
       "winner_model": "Gemini"
+    },
+    "permutations-ii": {
+      "title": "Permutations II",
+      "frontend_id": "47",
+      "difficulty": "Medium",
+      "mode": "extra",
+      "solved_at": "2026-08-27T08:51:29.861538",
+      "date": "2026-08-27",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -126,8 +135,8 @@
     },
     "2026-08-27": {
       "potd": 1,
-      "extra": 1,
-      "total": 2
+      "extra": 2,
+      "total": 3
     }
   }
 }
