@@ -98,6 +98,15 @@
       "solved_at": "2026-08-26T22:45:51.058464",
       "date": "2026-08-26",
       "winner_model": "Gemini"
+    },
+    "lexicographically-smallest-permutation-greater-than-target": {
+      "title": "Lexicographically Smallest Permutation Greater Than Target",
+      "frontend_id": "3720",
+      "difficulty": "Medium",
+      "mode": "potd",
+      "solved_at": "2026-08-27T06:08:20.690971",
+      "date": "2026-08-27",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -105,6 +114,11 @@
       "potd": 1,
       "extra": 10,
       "total": 11
+    },
+    "2026-08-27": {
+      "potd": 1,
+      "extra": 0,
+      "total": 1
     }
   }
 }
