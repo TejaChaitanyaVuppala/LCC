@@ -179,6 +179,15 @@
       "solved_at": "2026-08-27T20:31:18.832806+05:30",
       "date": "2026-08-27",
       "winner_model": "Gemini"
+    },
+    "accounts-merge": {
+      "title": "Accounts Merge",
+      "frontend_id": "721",
+      "difficulty": "Medium",
+      "mode": "extra",
+      "solved_at": "2026-08-27T23:31:13.932941+05:30",
+      "date": "2026-08-27",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -189,8 +198,8 @@
     },
     "2026-08-27": {
       "potd": 3,
-      "extra": 8,
-      "total": 11
+      "extra": 9,
+      "total": 12
     }
   }
 }
