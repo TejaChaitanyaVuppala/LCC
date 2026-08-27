@@ -170,6 +170,15 @@
       "solved_at": "2026-08-27T20:07:24.159134+05:30",
       "date": "2026-08-27",
       "winner_model": "Gemini"
+    },
+    "remove-duplicates-from-sorted-list": {
+      "title": "Remove Duplicates from Sorted List",
+      "frontend_id": "83",
+      "difficulty": "Easy",
+      "mode": "extra",
+      "solved_at": "2026-08-27T20:31:18.832806+05:30",
+      "date": "2026-08-27",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -180,8 +189,8 @@
     },
     "2026-08-27": {
       "potd": 3,
-      "extra": 7,
-      "total": 10
+      "extra": 8,
+      "total": 11
     }
   }
 }
