@@ -143,6 +143,15 @@
       "solved_at": "2026-08-27T17:33:08.621014+05:30",
       "date": "2026-08-27",
       "winner_model": "Gemini"
+    },
+    "verbal-arithmetic-puzzle": {
+      "title": "Verbal Arithmetic Puzzle",
+      "frontend_id": "1307",
+      "difficulty": "Hard",
+      "mode": "extra",
+      "solved_at": "2026-08-27T17:38:44.527299+05:30",
+      "date": "2026-08-27",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -153,8 +162,8 @@
     },
     "2026-08-27": {
       "potd": 1,
-      "extra": 4,
-      "total": 5
+      "extra": 5,
+      "total": 6
     }
   }
 }
