@@ -197,6 +197,15 @@
       "solved_at": "2026-08-28T07:01:38.169200+05:30",
       "date": "2026-08-28",
       "winner_model": "Gemini"
+    },
+    "count-number-of-pairs-with-absolute-difference-k": {
+      "title": "Count Number of Pairs With Absolute Difference K",
+      "frontend_id": "2006",
+      "difficulty": "Easy",
+      "mode": "extra",
+      "solved_at": "2026-08-28T10:31:06.079042+05:30",
+      "date": "2026-08-28",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -212,8 +221,8 @@
     },
     "2026-08-28": {
       "potd": 1,
-      "extra": 0,
-      "total": 1
+      "extra": 1,
+      "total": 2
     }
   }
 }
