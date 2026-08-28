@@ -233,6 +233,15 @@
       "solved_at": "2026-08-28T20:31:16.678997+05:30",
       "date": "2026-08-28",
       "winner_model": "Gemini"
+    },
+    "implement-stack-using-queues": {
+      "title": "Implement Stack using Queues",
+      "frontend_id": "225",
+      "difficulty": "Easy",
+      "mode": "extra",
+      "solved_at": "2026-08-28T23:30:54.893369+05:30",
+      "date": "2026-08-28",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -248,8 +257,8 @@
     },
     "2026-08-28": {
       "potd": 1,
-      "extra": 4,
-      "total": 5
+      "extra": 5,
+      "total": 6
     }
   }
 }
