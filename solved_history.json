@@ -188,6 +188,15 @@
       "solved_at": "2026-08-27T23:31:13.932941+05:30",
       "date": "2026-08-27",
       "winner_model": "Gemini"
+    },
+    "lexicographically-smallest-palindromic-permutation-greater-than-target": {
+      "title": "Lexicographically Smallest Palindromic Permutation Greater Than Target",
+      "frontend_id": "3734",
+      "difficulty": "Hard",
+      "mode": "potd",
+      "solved_at": "2026-08-28T07:01:38.169200+05:30",
+      "date": "2026-08-28",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -200,6 +209,11 @@
       "potd": 3,
       "extra": 9,
       "total": 12
+    },
+    "2026-08-28": {
+      "potd": 1,
+      "extra": 0,
+      "total": 1
     }
   }
 }
