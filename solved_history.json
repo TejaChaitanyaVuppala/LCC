@@ -224,6 +224,15 @@
       "solved_at": "2026-08-28T18:31:27.074048+05:30",
       "date": "2026-08-28",
       "winner_model": "Gemini"
+    },
+    "open-the-lock": {
+      "title": "Open the Lock",
+      "frontend_id": "752",
+      "difficulty": "Medium",
+      "mode": "extra",
+      "solved_at": "2026-08-28T20:31:16.678997+05:30",
+      "date": "2026-08-28",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -239,8 +248,8 @@
     },
     "2026-08-28": {
       "potd": 1,
-      "extra": 3,
-      "total": 4
+      "extra": 4,
+      "total": 5
     }
   }
 }
