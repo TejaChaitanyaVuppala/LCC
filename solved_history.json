@@ -215,6 +215,15 @@
       "solved_at": "2026-08-28T14:31:08.077600+05:30",
       "date": "2026-08-28",
       "winner_model": "Gemini"
+    },
+    "remove-all-adjacent-duplicates-in-string-ii": {
+      "title": "Remove All Adjacent Duplicates in String II",
+      "frontend_id": "1209",
+      "difficulty": "Medium",
+      "mode": "extra",
+      "solved_at": "2026-08-28T18:31:27.074048+05:30",
+      "date": "2026-08-28",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -230,8 +239,8 @@
     },
     "2026-08-28": {
       "potd": 1,
-      "extra": 2,
-      "total": 3
+      "extra": 3,
+      "total": 4
     }
   }
 }
