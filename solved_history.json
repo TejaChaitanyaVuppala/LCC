@@ -260,6 +260,15 @@
       "solved_at": "2026-08-29T10:31:29.011772+05:30",
       "date": "2026-08-29",
       "winner_model": "Gemini"
+    },
+    "find-positive-integer-solution-for-a-given-equation": {
+      "title": "Find Positive Integer Solution for a Given Equation",
+      "frontend_id": "1237",
+      "difficulty": "Medium",
+      "mode": "extra",
+      "solved_at": "2026-08-29T14:31:13.474438+05:30",
+      "date": "2026-08-29",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -280,8 +289,8 @@
     },
     "2026-08-29": {
       "potd": 1,
-      "extra": 1,
-      "total": 2
+      "extra": 2,
+      "total": 3
     }
   }
 }
