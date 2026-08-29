@@ -251,6 +251,15 @@
       "solved_at": "2026-08-29T07:01:10.982087+05:30",
       "date": "2026-08-29",
       "winner_model": "Gemini"
+    },
+    "count-the-number-of-incremovable-subarrays-i": {
+      "title": "Count the Number of Incremovable Subarrays I",
+      "frontend_id": "2970",
+      "difficulty": "Easy",
+      "mode": "extra",
+      "solved_at": "2026-08-29T10:31:29.011772+05:30",
+      "date": "2026-08-29",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -271,8 +280,8 @@
     },
     "2026-08-29": {
       "potd": 1,
-      "extra": 0,
-      "total": 1
+      "extra": 1,
+      "total": 2
     }
   }
 }
