@@ -278,6 +278,15 @@
       "solved_at": "2026-08-29T18:31:29.692088+05:30",
       "date": "2026-08-29",
       "winner_model": "Gemini"
+    },
+    "remove-outermost-parentheses": {
+      "title": "Remove Outermost Parentheses",
+      "frontend_id": "1021",
+      "difficulty": "Easy",
+      "mode": "extra",
+      "solved_at": "2026-08-29T20:31:22.888339+05:30",
+      "date": "2026-08-29",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -298,8 +307,8 @@
     },
     "2026-08-29": {
       "potd": 1,
-      "extra": 3,
-      "total": 4
+      "extra": 4,
+      "total": 5
     }
   }
 }
