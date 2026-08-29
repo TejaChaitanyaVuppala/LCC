@@ -287,6 +287,15 @@
       "solved_at": "2026-08-29T20:31:22.888339+05:30",
       "date": "2026-08-29",
       "winner_model": "Gemini"
+    },
+    "remove-element": {
+      "title": "Remove Element",
+      "frontend_id": "27",
+      "difficulty": "Easy",
+      "mode": "extra",
+      "solved_at": "2026-08-29T23:31:11.448206+05:30",
+      "date": "2026-08-29",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -307,8 +316,8 @@
     },
     "2026-08-29": {
       "potd": 1,
-      "extra": 4,
-      "total": 5
+      "extra": 5,
+      "total": 6
     }
   }
 }
