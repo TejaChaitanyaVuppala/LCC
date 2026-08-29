@@ -296,6 +296,15 @@
       "solved_at": "2026-08-29T23:31:11.448206+05:30",
       "date": "2026-08-29",
       "winner_model": "Gemini"
+    },
+    "find-right-interval": {
+      "title": "Find Right Interval",
+      "frontend_id": "436",
+      "difficulty": "Medium",
+      "mode": "extra",
+      "solved_at": "2026-08-30T00:55:55.167139+05:30",
+      "date": "2026-08-30",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -318,6 +327,11 @@
       "potd": 1,
       "extra": 5,
       "total": 6
+    },
+    "2026-08-30": {
+      "potd": 0,
+      "extra": 1,
+      "total": 1
     }
   }
 }
