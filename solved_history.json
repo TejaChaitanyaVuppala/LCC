@@ -269,6 +269,15 @@
       "solved_at": "2026-08-29T14:31:13.474438+05:30",
       "date": "2026-08-29",
       "winner_model": "Gemini"
+    },
+    "minimum-number-of-chairs-in-a-waiting-room": {
+      "title": "Minimum Number of Chairs in a Waiting Room",
+      "frontend_id": "3168",
+      "difficulty": "Easy",
+      "mode": "extra",
+      "solved_at": "2026-08-29T18:31:29.692088+05:30",
+      "date": "2026-08-29",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -289,8 +298,8 @@
     },
     "2026-08-29": {
       "potd": 1,
-      "extra": 2,
-      "total": 3
+      "extra": 3,
+      "total": 4
     }
   }
 }
