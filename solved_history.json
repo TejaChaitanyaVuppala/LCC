@@ -242,6 +242,15 @@
       "solved_at": "2026-08-28T23:30:54.893369+05:30",
       "date": "2026-08-28",
       "winner_model": "Gemini"
+    },
+    "make-lexicographically-smallest-array-by-swapping-elements": {
+      "title": "Make Lexicographically Smallest Array by Swapping Elements",
+      "frontend_id": "2948",
+      "difficulty": "Medium",
+      "mode": "potd",
+      "solved_at": "2026-08-29T07:01:10.982087+05:30",
+      "date": "2026-08-29",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -259,6 +268,11 @@
       "potd": 1,
       "extra": 5,
       "total": 6
+    },
+    "2026-08-29": {
+      "potd": 1,
+      "extra": 0,
+      "total": 1
     }
   }
 }
