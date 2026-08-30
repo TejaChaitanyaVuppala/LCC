@@ -350,6 +350,15 @@
       "solved_at": "2026-08-30T20:31:17.295763+05:30",
       "date": "2026-08-30",
       "winner_model": "Gemini"
+    },
+    "binary-tree-inorder-traversal": {
+      "title": "Binary Tree Inorder Traversal",
+      "frontend_id": "94",
+      "difficulty": "Easy",
+      "mode": "extra",
+      "solved_at": "2026-08-30T23:31:04.082839+05:30",
+      "date": "2026-08-30",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -375,8 +384,8 @@
     },
     "2026-08-30": {
       "potd": 1,
-      "extra": 5,
-      "total": 6
+      "extra": 6,
+      "total": 7
     }
   }
 }
