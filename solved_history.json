@@ -314,6 +314,15 @@
       "solved_at": "2026-08-30T07:01:05.965880+05:30",
       "date": "2026-08-30",
       "winner_model": "Gemini"
+    },
+    "reverse-substrings-between-each-pair-of-parentheses": {
+      "title": "Reverse Substrings Between Each Pair of Parentheses",
+      "frontend_id": "1190",
+      "difficulty": "Medium",
+      "mode": "extra",
+      "solved_at": "2026-08-30T10:31:30.761433+05:30",
+      "date": "2026-08-30",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -339,8 +348,8 @@
     },
     "2026-08-30": {
       "potd": 1,
-      "extra": 1,
-      "total": 2
+      "extra": 2,
+      "total": 3
     }
   }
 }
