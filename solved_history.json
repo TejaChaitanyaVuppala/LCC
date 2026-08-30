@@ -332,6 +332,15 @@
       "solved_at": "2026-08-30T14:31:23.905034+05:30",
       "date": "2026-08-30",
       "winner_model": "Gemini"
+    },
+    "unique-paths-ii": {
+      "title": "Unique Paths II",
+      "frontend_id": "63",
+      "difficulty": "Medium",
+      "mode": "extra",
+      "solved_at": "2026-08-30T18:31:20.161922+05:30",
+      "date": "2026-08-30",
+      "winner_model": "Groq"
     }
   },
   "daily_counts": {
@@ -357,8 +366,8 @@
     },
     "2026-08-30": {
       "potd": 1,
-      "extra": 3,
-      "total": 4
+      "extra": 4,
+      "total": 5
     }
   }
 }
