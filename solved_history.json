@@ -341,6 +341,15 @@
       "solved_at": "2026-08-30T18:31:20.161922+05:30",
       "date": "2026-08-30",
       "winner_model": "Groq"
+    },
+    "odd-even-linked-list": {
+      "title": "Odd Even Linked List",
+      "frontend_id": "328",
+      "difficulty": "Medium",
+      "mode": "extra",
+      "solved_at": "2026-08-30T20:31:17.295763+05:30",
+      "date": "2026-08-30",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -366,8 +375,8 @@
     },
     "2026-08-30": {
       "potd": 1,
-      "extra": 4,
-      "total": 5
+      "extra": 5,
+      "total": 6
     }
   }
 }
