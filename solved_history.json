@@ -368,6 +368,15 @@
       "solved_at": "2026-08-31T07:01:07.103767+05:30",
       "date": "2026-08-31",
       "winner_model": "Gemini"
+    },
+    "unique-binary-search-trees": {
+      "title": "Unique Binary Search Trees",
+      "frontend_id": "96",
+      "difficulty": "Medium",
+      "mode": "extra",
+      "solved_at": "2026-08-31T10:31:09.466426+05:30",
+      "date": "2026-08-31",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -398,8 +407,8 @@
     },
     "2026-08-31": {
       "potd": 1,
-      "extra": 0,
-      "total": 1
+      "extra": 1,
+      "total": 2
     }
   }
 }
