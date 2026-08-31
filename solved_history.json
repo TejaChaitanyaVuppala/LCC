@@ -377,6 +377,15 @@
       "solved_at": "2026-08-31T10:31:09.466426+05:30",
       "date": "2026-08-31",
       "winner_model": "Gemini"
+    },
+    "concatenation-of-array": {
+      "title": "Concatenation of Array",
+      "frontend_id": "1929",
+      "difficulty": "Easy",
+      "mode": "extra",
+      "solved_at": "2026-08-31T14:31:27.365014+05:30",
+      "date": "2026-08-31",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -407,8 +416,8 @@
     },
     "2026-08-31": {
       "potd": 1,
-      "extra": 1,
-      "total": 2
+      "extra": 2,
+      "total": 3
     }
   }
 }
