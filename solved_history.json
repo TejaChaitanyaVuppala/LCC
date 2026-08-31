@@ -395,6 +395,15 @@
       "solved_at": "2026-08-31T18:31:11.188893+05:30",
       "date": "2026-08-31",
       "winner_model": "Groq"
+    },
+    "rotate-list": {
+      "title": "Rotate List",
+      "frontend_id": "61",
+      "difficulty": "Medium",
+      "mode": "extra",
+      "solved_at": "2026-08-31T20:33:09.218443+05:30",
+      "date": "2026-08-31",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -425,8 +434,8 @@
     },
     "2026-08-31": {
       "potd": 1,
-      "extra": 3,
-      "total": 4
+      "extra": 4,
+      "total": 5
     }
   }
 }
