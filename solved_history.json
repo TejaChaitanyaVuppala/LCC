@@ -386,6 +386,15 @@
       "solved_at": "2026-08-31T14:31:27.365014+05:30",
       "date": "2026-08-31",
       "winner_model": "Gemini"
+    },
+    "find-subsequence-of-length-k-with-the-largest-sum": {
+      "title": "Find Subsequence of Length K With the Largest Sum",
+      "frontend_id": "2099",
+      "difficulty": "Easy",
+      "mode": "extra",
+      "solved_at": "2026-08-31T18:31:11.188893+05:30",
+      "date": "2026-08-31",
+      "winner_model": "Groq"
     }
   },
   "daily_counts": {
@@ -416,8 +425,8 @@
     },
     "2026-08-31": {
       "potd": 1,
-      "extra": 2,
-      "total": 3
+      "extra": 3,
+      "total": 4
     }
   }
 }
