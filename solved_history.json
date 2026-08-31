@@ -359,6 +359,15 @@
       "solved_at": "2026-08-30T23:31:04.082839+05:30",
       "date": "2026-08-30",
       "winner_model": "Gemini"
+    },
+    "find-the-minimum-and-maximum-number-of-nodes-between-critical-points": {
+      "title": "Find the Minimum and Maximum Number of Nodes Between Critical Points",
+      "frontend_id": "2058",
+      "difficulty": "Medium",
+      "mode": "potd",
+      "solved_at": "2026-08-31T07:01:07.103767+05:30",
+      "date": "2026-08-31",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -386,6 +395,11 @@
       "potd": 1,
       "extra": 6,
       "total": 7
+    },
+    "2026-08-31": {
+      "potd": 1,
+      "extra": 0,
+      "total": 1
     }
   }
 }
