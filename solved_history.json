@@ -431,6 +431,15 @@
       "solved_at": "2026-09-01T10:32:51.725957+05:30",
       "date": "2026-09-01",
       "winner_model": "Groq"
+    },
+    "add-strings": {
+      "title": "Add Strings",
+      "frontend_id": "415",
+      "difficulty": "Easy",
+      "mode": "extra",
+      "solved_at": "2026-09-01T14:31:46.454631+05:30",
+      "date": "2026-09-01",
+      "winner_model": "Groq"
     }
   },
   "daily_counts": {
@@ -466,8 +475,8 @@
     },
     "2026-09-01": {
       "potd": 1,
-      "extra": 1,
-      "total": 2
+      "extra": 2,
+      "total": 3
     }
   }
 }
