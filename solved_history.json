@@ -467,6 +467,15 @@
       "solved_at": "2026-09-01T20:32:01.114936+05:30",
       "date": "2026-09-01",
       "winner_model": "Gemini"
+    },
+    "circular-permutation-in-binary-representation": {
+      "title": "Circular Permutation in Binary Representation",
+      "frontend_id": "1238",
+      "difficulty": "Medium",
+      "mode": "extra",
+      "solved_at": "2026-09-01T23:31:15.433844+05:30",
+      "date": "2026-09-01",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -502,8 +511,8 @@
     },
     "2026-09-01": {
       "potd": 1,
-      "extra": 5,
-      "total": 6
+      "extra": 6,
+      "total": 7
     }
   }
 }
