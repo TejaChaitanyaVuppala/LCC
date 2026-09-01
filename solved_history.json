@@ -422,6 +422,15 @@
       "solved_at": "2026-09-01T07:00:59.100879+05:30",
       "date": "2026-09-01",
       "winner_model": "Groq"
+    },
+    "two-furthest-houses-with-different-colors": {
+      "title": "Two Furthest Houses With Different Colors",
+      "frontend_id": "2078",
+      "difficulty": "Easy",
+      "mode": "extra",
+      "solved_at": "2026-09-01T10:32:51.725957+05:30",
+      "date": "2026-09-01",
+      "winner_model": "Groq"
     }
   },
   "daily_counts": {
@@ -457,8 +466,8 @@
     },
     "2026-09-01": {
       "potd": 1,
-      "extra": 0,
-      "total": 1
+      "extra": 1,
+      "total": 2
     }
   }
 }
