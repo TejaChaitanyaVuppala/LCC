@@ -503,6 +503,15 @@
       "solved_at": "2026-09-02T14:31:10.292729+05:30",
       "date": "2026-09-02",
       "winner_model": "Gemini"
+    },
+    "coin-change": {
+      "title": "Coin Change",
+      "frontend_id": "322",
+      "difficulty": "Medium",
+      "mode": "extra",
+      "solved_at": "2026-09-02T18:32:28.320733+05:30",
+      "date": "2026-09-02",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -543,8 +552,8 @@
     },
     "2026-09-02": {
       "potd": 1,
-      "extra": 2,
-      "total": 3
+      "extra": 3,
+      "total": 4
     }
   }
 }
