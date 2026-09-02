@@ -476,6 +476,15 @@
       "solved_at": "2026-09-01T23:31:15.433844+05:30",
       "date": "2026-09-01",
       "winner_model": "Gemini"
+    },
+    "construct-uniform-parity-array-i": {
+      "title": "Construct Uniform Parity Array I",
+      "frontend_id": "3875",
+      "difficulty": "Easy",
+      "mode": "potd",
+      "solved_at": "2026-09-02T07:01:20.249403+05:30",
+      "date": "2026-09-02",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -513,6 +522,11 @@
       "potd": 1,
       "extra": 6,
       "total": 7
+    },
+    "2026-09-02": {
+      "potd": 1,
+      "extra": 0,
+      "total": 1
     }
   }
 }
