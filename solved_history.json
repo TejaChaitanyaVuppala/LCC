@@ -482,7 +482,7 @@
       "frontend_id": "3875",
       "difficulty": "Easy",
       "mode": "potd",
-      "solved_at": "2026-09-02T07:01:20.249403+05:30",
+      "solved_at": "2026-09-02T20:49:53.518256+05:30",
       "date": "2026-09-02",
       "winner_model": "Gemini"
     },
@@ -551,9 +551,9 @@
       "total": 7
     },
     "2026-09-02": {
-      "potd": 1,
+      "potd": 2,
       "extra": 3,
-      "total": 4
+      "total": 5
     }
   }
 }
