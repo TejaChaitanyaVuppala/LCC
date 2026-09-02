@@ -485,6 +485,15 @@
       "solved_at": "2026-09-02T07:01:20.249403+05:30",
       "date": "2026-09-02",
       "winner_model": "Gemini"
+    },
+    "matrix-similarity-after-cyclic-shifts": {
+      "title": "Matrix Similarity After Cyclic Shifts",
+      "frontend_id": "2946",
+      "difficulty": "Easy",
+      "mode": "extra",
+      "solved_at": "2026-09-02T10:31:18.970019+05:30",
+      "date": "2026-09-02",
+      "winner_model": "Groq"
     }
   },
   "daily_counts": {
@@ -525,8 +534,8 @@
     },
     "2026-09-02": {
       "potd": 1,
-      "extra": 0,
-      "total": 1
+      "extra": 1,
+      "total": 2
     }
   }
 }
