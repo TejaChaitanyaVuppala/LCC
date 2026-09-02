@@ -512,6 +512,15 @@
       "solved_at": "2026-09-02T18:32:28.320733+05:30",
       "date": "2026-09-02",
       "winner_model": "Gemini"
+    },
+    "count-special-integers": {
+      "title": "Count Special Integers",
+      "frontend_id": "2376",
+      "difficulty": "Hard",
+      "mode": "extra",
+      "solved_at": "2026-09-02T20:55:17.359258+05:30",
+      "date": "2026-09-02",
+      "winner_model": "Groq"
     }
   },
   "daily_counts": {
@@ -552,8 +561,8 @@
     },
     "2026-09-02": {
       "potd": 2,
-      "extra": 3,
-      "total": 5
+      "extra": 4,
+      "total": 6
     }
   }
 }
