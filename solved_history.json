@@ -539,6 +539,15 @@
       "solved_at": "2026-09-03T07:02:46.803102+05:30",
       "date": "2026-09-03",
       "winner_model": "Groq"
+    },
+    "find-the-integer-added-to-array-i": {
+      "title": "Find the Integer Added to Array I",
+      "frontend_id": "3131",
+      "difficulty": "Easy",
+      "mode": "extra",
+      "solved_at": "2026-09-03T10:33:20.702451+05:30",
+      "date": "2026-09-03",
+      "winner_model": "Groq"
     }
   },
   "daily_counts": {
@@ -584,8 +593,8 @@
     },
     "2026-09-03": {
       "potd": 1,
-      "extra": 0,
-      "total": 1
+      "extra": 1,
+      "total": 2
     }
   }
 }
