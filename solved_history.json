@@ -566,6 +566,15 @@
       "solved_at": "2026-09-03T18:31:13.746239+05:30",
       "date": "2026-09-03",
       "winner_model": "Gemini"
+    },
+    "wiggle-sort-ii": {
+      "title": "Wiggle Sort II",
+      "frontend_id": "324",
+      "difficulty": "Medium",
+      "mode": "extra",
+      "solved_at": "2026-09-03T20:31:14.061613+05:30",
+      "date": "2026-09-03",
+      "winner_model": "Groq"
     }
   },
   "daily_counts": {
@@ -611,8 +620,8 @@
     },
     "2026-09-03": {
       "potd": 1,
-      "extra": 3,
-      "total": 4
+      "extra": 4,
+      "total": 5
     }
   }
 }
