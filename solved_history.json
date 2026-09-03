@@ -548,6 +548,15 @@
       "solved_at": "2026-09-03T10:33:20.702451+05:30",
       "date": "2026-09-03",
       "winner_model": "Groq"
+    },
+    "power-of-four": {
+      "title": "Power of Four",
+      "frontend_id": "342",
+      "difficulty": "Easy",
+      "mode": "extra",
+      "solved_at": "2026-09-03T14:32:21.882152+05:30",
+      "date": "2026-09-03",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -593,8 +602,8 @@
     },
     "2026-09-03": {
       "potd": 1,
-      "extra": 1,
-      "total": 2
+      "extra": 2,
+      "total": 3
     }
   }
 }
