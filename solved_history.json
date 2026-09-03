@@ -557,6 +557,15 @@
       "solved_at": "2026-09-03T14:32:21.882152+05:30",
       "date": "2026-09-03",
       "winner_model": "Gemini"
+    },
+    "relative-ranks": {
+      "title": "Relative Ranks",
+      "frontend_id": "506",
+      "difficulty": "Easy",
+      "mode": "extra",
+      "solved_at": "2026-09-03T18:31:13.746239+05:30",
+      "date": "2026-09-03",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -602,8 +611,8 @@
     },
     "2026-09-03": {
       "potd": 1,
-      "extra": 2,
-      "total": 3
+      "extra": 3,
+      "total": 4
     }
   }
 }
