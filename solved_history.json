@@ -593,6 +593,15 @@
       "solved_at": "2026-09-04T07:01:01.803513+05:30",
       "date": "2026-09-04",
       "winner_model": "Gemini"
+    },
+    "count-numbers-with-unique-digits": {
+      "title": "Count Numbers with Unique Digits",
+      "frontend_id": "357",
+      "difficulty": "Medium",
+      "mode": "extra",
+      "solved_at": "2026-09-04T10:31:14.584678+05:30",
+      "date": "2026-09-04",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -643,8 +652,8 @@
     },
     "2026-09-04": {
       "potd": 1,
-      "extra": 0,
-      "total": 1
+      "extra": 1,
+      "total": 2
     }
   }
 }
