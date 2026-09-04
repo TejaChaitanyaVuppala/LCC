@@ -629,6 +629,15 @@
       "solved_at": "2026-09-04T20:31:17.654473+05:30",
       "date": "2026-09-04",
       "winner_model": "Gemini"
+    },
+    "video-stitching": {
+      "title": "Video Stitching",
+      "frontend_id": "1024",
+      "difficulty": "Medium",
+      "mode": "extra",
+      "solved_at": "2026-09-04T23:31:23.383847+05:30",
+      "date": "2026-09-04",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -679,8 +688,8 @@
     },
     "2026-09-04": {
       "potd": 1,
-      "extra": 4,
-      "total": 5
+      "extra": 5,
+      "total": 6
     }
   }
 }
