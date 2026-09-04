@@ -602,6 +602,15 @@
       "solved_at": "2026-09-04T10:31:14.584678+05:30",
       "date": "2026-09-04",
       "winner_model": "Gemini"
+    },
+    "plus-one": {
+      "title": "Plus One",
+      "frontend_id": "66",
+      "difficulty": "Easy",
+      "mode": "extra",
+      "solved_at": "2026-09-04T14:31:08.631540+05:30",
+      "date": "2026-09-04",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -652,8 +661,8 @@
     },
     "2026-09-04": {
       "potd": 1,
-      "extra": 1,
-      "total": 2
+      "extra": 2,
+      "total": 3
     }
   }
 }
