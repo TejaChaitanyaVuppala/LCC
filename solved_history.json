@@ -611,6 +611,15 @@
       "solved_at": "2026-09-04T14:31:08.631540+05:30",
       "date": "2026-09-04",
       "winner_model": "Gemini"
+    },
+    "remove-palindromic-subsequences": {
+      "title": "Remove Palindromic Subsequences",
+      "frontend_id": "1332",
+      "difficulty": "Easy",
+      "mode": "extra",
+      "solved_at": "2026-09-04T18:31:40.893832+05:30",
+      "date": "2026-09-04",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -661,8 +670,8 @@
     },
     "2026-09-04": {
       "potd": 1,
-      "extra": 2,
-      "total": 3
+      "extra": 3,
+      "total": 4
     }
   }
 }
