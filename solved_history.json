@@ -620,6 +620,15 @@
       "solved_at": "2026-09-04T18:31:40.893832+05:30",
       "date": "2026-09-04",
       "winner_model": "Gemini"
+    },
+    "domino-and-tromino-tiling": {
+      "title": "Domino and Tromino Tiling",
+      "frontend_id": "790",
+      "difficulty": "Medium",
+      "mode": "extra",
+      "solved_at": "2026-09-04T20:31:17.654473+05:30",
+      "date": "2026-09-04",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -670,8 +679,8 @@
     },
     "2026-09-04": {
       "potd": 1,
-      "extra": 3,
-      "total": 4
+      "extra": 4,
+      "total": 5
     }
   }
 }
