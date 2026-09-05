@@ -656,6 +656,15 @@
       "solved_at": "2026-09-05T10:31:09.519599+05:30",
       "date": "2026-09-05",
       "winner_model": "Gemini"
+    },
+    "find-the-highest-altitude": {
+      "title": "Find the Highest Altitude",
+      "frontend_id": "1732",
+      "difficulty": "Easy",
+      "mode": "extra",
+      "solved_at": "2026-09-05T14:31:29.305493+05:30",
+      "date": "2026-09-05",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -711,8 +720,8 @@
     },
     "2026-09-05": {
       "potd": 1,
-      "extra": 1,
-      "total": 2
+      "extra": 2,
+      "total": 3
     }
   }
 }
