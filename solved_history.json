@@ -674,6 +674,15 @@
       "solved_at": "2026-09-05T20:31:26.837736+05:30",
       "date": "2026-09-05",
       "winner_model": "Groq"
+    },
+    "lemonade-change": {
+      "title": "Lemonade Change",
+      "frontend_id": "860",
+      "difficulty": "Easy",
+      "mode": "extra",
+      "solved_at": "2026-09-05T23:31:26.730075+05:30",
+      "date": "2026-09-05",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -729,8 +738,8 @@
     },
     "2026-09-05": {
       "potd": 1,
-      "extra": 3,
-      "total": 4
+      "extra": 4,
+      "total": 5
     }
   }
 }
