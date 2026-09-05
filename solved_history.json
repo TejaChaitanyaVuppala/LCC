@@ -647,6 +647,15 @@
       "solved_at": "2026-09-05T07:01:16.773995+05:30",
       "date": "2026-09-05",
       "winner_model": "Gemini"
+    },
+    "rectangle-area": {
+      "title": "Rectangle Area",
+      "frontend_id": "223",
+      "difficulty": "Medium",
+      "mode": "extra",
+      "solved_at": "2026-09-05T10:31:09.519599+05:30",
+      "date": "2026-09-05",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -702,8 +711,8 @@
     },
     "2026-09-05": {
       "potd": 1,
-      "extra": 0,
-      "total": 1
+      "extra": 1,
+      "total": 2
     }
   }
 }
