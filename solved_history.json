@@ -665,6 +665,15 @@
       "solved_at": "2026-09-05T14:31:29.305493+05:30",
       "date": "2026-09-05",
       "winner_model": "Gemini"
+    },
+    "flip-equivalent-binary-trees": {
+      "title": "Flip Equivalent Binary Trees",
+      "frontend_id": "951",
+      "difficulty": "Medium",
+      "mode": "extra",
+      "solved_at": "2026-09-05T20:31:26.837736+05:30",
+      "date": "2026-09-05",
+      "winner_model": "Groq"
     }
   },
   "daily_counts": {
@@ -720,8 +729,8 @@
     },
     "2026-09-05": {
       "potd": 1,
-      "extra": 2,
-      "total": 3
+      "extra": 3,
+      "total": 4
     }
   }
 }
