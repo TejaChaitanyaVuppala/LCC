@@ -638,6 +638,15 @@
       "solved_at": "2026-09-04T23:31:23.383847+05:30",
       "date": "2026-09-04",
       "winner_model": "Gemini"
+    },
+    "smallest-stable-index-ii": {
+      "title": "Smallest Stable Index II",
+      "frontend_id": "3904",
+      "difficulty": "Medium",
+      "mode": "potd",
+      "solved_at": "2026-09-05T07:01:16.773995+05:30",
+      "date": "2026-09-05",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -690,6 +699,11 @@
       "potd": 1,
       "extra": 5,
       "total": 6
+    },
+    "2026-09-05": {
+      "potd": 1,
+      "extra": 0,
+      "total": 1
     }
   }
 }
