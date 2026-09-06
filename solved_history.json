@@ -719,6 +719,15 @@
       "solved_at": "2026-09-06T18:32:07.913956+05:30",
       "date": "2026-09-06",
       "winner_model": "Groq"
+    },
+    "n-ary-tree-preorder-traversal": {
+      "title": "N-ary Tree Preorder Traversal",
+      "frontend_id": "589",
+      "difficulty": "Easy",
+      "mode": "extra",
+      "solved_at": "2026-09-06T20:31:24.726394+05:30",
+      "date": "2026-09-06",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -779,8 +788,8 @@
     },
     "2026-09-06": {
       "potd": 1,
-      "extra": 3,
-      "total": 4
+      "extra": 4,
+      "total": 5
     }
   }
 }
