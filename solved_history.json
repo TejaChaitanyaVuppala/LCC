@@ -692,6 +692,15 @@
       "solved_at": "2026-09-06T07:00:47.510193+05:30",
       "date": "2026-09-06",
       "winner_model": "Gemini"
+    },
+    "maximum-number-of-balls-in-a-box": {
+      "title": "Maximum Number of Balls in a Box",
+      "frontend_id": "1742",
+      "difficulty": "Easy",
+      "mode": "extra",
+      "solved_at": "2026-09-06T10:31:01.884531+05:30",
+      "date": "2026-09-06",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -752,8 +761,8 @@
     },
     "2026-09-06": {
       "potd": 1,
-      "extra": 0,
-      "total": 1
+      "extra": 1,
+      "total": 2
     }
   }
 }
