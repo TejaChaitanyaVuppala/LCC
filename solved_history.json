@@ -728,6 +728,15 @@
       "solved_at": "2026-09-06T20:31:24.726394+05:30",
       "date": "2026-09-06",
       "winner_model": "Gemini"
+    },
+    "repeated-dna-sequences": {
+      "title": "Repeated DNA Sequences",
+      "frontend_id": "187",
+      "difficulty": "Medium",
+      "mode": "extra",
+      "solved_at": "2026-09-06T23:31:03.762876+05:30",
+      "date": "2026-09-06",
+      "winner_model": "Groq"
     }
   },
   "daily_counts": {
@@ -788,8 +797,8 @@
     },
     "2026-09-06": {
       "potd": 1,
-      "extra": 4,
-      "total": 5
+      "extra": 5,
+      "total": 6
     }
   }
 }
