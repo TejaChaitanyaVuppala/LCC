@@ -737,6 +737,15 @@
       "solved_at": "2026-09-06T23:31:03.762876+05:30",
       "date": "2026-09-06",
       "winner_model": "Groq"
+    },
+    "distinct-subsequences-ii": {
+      "title": "Distinct Subsequences II",
+      "frontend_id": "940",
+      "difficulty": "Hard",
+      "mode": "potd",
+      "solved_at": "2026-09-07T07:56:04.672897+05:30",
+      "date": "2026-09-07",
+      "winner_model": "Groq"
     }
   },
   "daily_counts": {
@@ -799,6 +808,11 @@
       "potd": 1,
       "extra": 5,
       "total": 6
+    },
+    "2026-09-07": {
+      "potd": 1,
+      "extra": 0,
+      "total": 1
     }
   }
 }
