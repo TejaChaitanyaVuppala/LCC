@@ -773,6 +773,15 @@
       "solved_at": "2026-09-07T14:31:36.201312+05:30",
       "date": "2026-09-07",
       "winner_model": "Groq"
+    },
+    "maximum-average-subarray-i": {
+      "title": "Maximum Average Subarray I",
+      "frontend_id": "643",
+      "difficulty": "Easy",
+      "mode": "extra",
+      "solved_at": "2026-09-07T14:34:02.874655+05:30",
+      "date": "2026-09-07",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -838,8 +847,8 @@
     },
     "2026-09-07": {
       "potd": 1,
-      "extra": 4,
-      "total": 5
+      "extra": 5,
+      "total": 6
     }
   }
 }
