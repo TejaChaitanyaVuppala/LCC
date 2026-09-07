@@ -782,6 +782,15 @@
       "solved_at": "2026-09-07T14:34:02.874655+05:30",
       "date": "2026-09-07",
       "winner_model": "Gemini"
+    },
+    "valid-parentheses": {
+      "title": "Valid Parentheses",
+      "frontend_id": "20",
+      "difficulty": "Easy",
+      "mode": "extra",
+      "solved_at": "2026-09-07T17:37:14.350795+05:30",
+      "date": "2026-09-07",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -847,8 +856,8 @@
     },
     "2026-09-07": {
       "potd": 1,
-      "extra": 5,
-      "total": 6
+      "extra": 6,
+      "total": 7
     }
   }
 }
