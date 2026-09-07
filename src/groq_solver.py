@@ -5,9 +5,9 @@ from typing import Optional, Dict, Any
 from src.logger import log_info, log_error
 
 class GroqSolver:
-    def __init__(self, api_key: Optional[str] = None, model_name: str = "qwen/qwen3.6-27b"):
+    def __init__(self, api_key: Optional[str] = None, model_name: str = "qwen/qwen3.8-27b"):
         self.api_key = api_key or os.getenv("GROQ_API_KEY")
-        self.model_name = model_name or os.getenv("GROQ_MODEL", "qwen/qwen3.6-27b")
+        self.model_name = model_name or os.getenv("GROQ_MODEL", "qwen/qwen3.8-27b")
         self.api_url = "https://api.groq.com/openai/v1/chat/completions"
 
         if not self.api_key:

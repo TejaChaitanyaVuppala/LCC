@@ -369,7 +369,7 @@ def main():
     gemini_model = os.getenv("GEMINI_MODEL", "gemini-3.6-flash")
     
     groq_api_key = os.getenv("GROQ_API_KEY")
-    groq_model = os.getenv("GROQ_MODEL", "qwen/qwen3.6-27b")
+    groq_model = os.getenv("GROQ_MODEL", "qwen/qwen3.8-27b")
 
     if not gemini_api_key and not groq_api_key:
         log_error("Neither GEMINI_API_KEY nor GROQ_API_KEY is set in environment or .env file.")
