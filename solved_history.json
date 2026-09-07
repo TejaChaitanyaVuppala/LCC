@@ -791,6 +791,15 @@
       "solved_at": "2026-09-07T17:37:14.350795+05:30",
       "date": "2026-09-07",
       "winner_model": "Gemini"
+    },
+    "knight-probability-in-chessboard": {
+      "title": "Knight Probability in Chessboard",
+      "frontend_id": "688",
+      "difficulty": "Medium",
+      "mode": "extra",
+      "solved_at": "2026-09-07T18:33:16.393261+05:30",
+      "date": "2026-09-07",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -856,8 +865,8 @@
     },
     "2026-09-07": {
       "potd": 1,
-      "extra": 6,
-      "total": 7
+      "extra": 7,
+      "total": 8
     }
   }
 }
