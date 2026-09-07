@@ -746,6 +746,15 @@
       "solved_at": "2026-09-07T07:56:04.672897+05:30",
       "date": "2026-09-07",
       "winner_model": "Groq"
+    },
+    "find-closest-number-to-zero": {
+      "title": "Find Closest Number to Zero",
+      "frontend_id": "2239",
+      "difficulty": "Easy",
+      "mode": "extra",
+      "solved_at": "2026-09-07T11:04:44.703620+05:30",
+      "date": "2026-09-07",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -811,8 +820,8 @@
     },
     "2026-09-07": {
       "potd": 1,
-      "extra": 1,
-      "total": 2
+      "extra": 2,
+      "total": 3
     }
   }
 }
