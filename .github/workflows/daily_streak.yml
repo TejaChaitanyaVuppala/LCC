@@ -28,6 +28,11 @@ on:
           - EASY
           - MEDIUM
           - HARD
+      problem_url:
+        description: 'Problem URL or Slug (optional, e.g. https://leetcode.com/problems/two-sum/ or two-sum)'
+        required: false
+        default: ''
+        type: string
       problem_count:
         description: 'Problem count for batch mode'
         required: false
@@ -82,6 +87,7 @@ jobs:
             echo "difficulty=${{ github.event.inputs.difficulty }}" >> $GITHUB_OUTPUT
             echo "extra_index=${{ github.event.inputs.extra_index }}" >> $GITHUB_OUTPUT
             echo "problem_count=${{ github.event.inputs.problem_count }}" >> $GITHUB_OUTPUT
+            echo "problem_url=${{ github.event.inputs.problem_url }}" >> $GITHUB_OUTPUT
           elif [ "${{ github.event_name }}" = "schedule" ] && [ -n "${{ github.event.schedule }}" ]; then
             SCHEDULE_CRON="${{ github.event.schedule }}"
             echo "Execution Mode: Scheduled Trigger (Cron: '$SCHEDULE_CRON')"
@@ -141,6 +147,7 @@ jobs:
             esac
             echo "difficulty=RANDOM" >> $GITHUB_OUTPUT
             echo "problem_count=1" >> $GITHUB_OUTPUT
+            echo "problem_url=" >> $GITHUB_OUTPUT
           else
             echo "Execution Mode: Dynamic Fallback based on IST hour"
             if [ "$CURRENT_HOUR" -le 4 ]; then
@@ -170,6 +177,7 @@ jobs:
             fi
             echo "difficulty=RANDOM" >> $GITHUB_OUTPUT
             echo "problem_count=1" >> $GITHUB_OUTPUT
+            echo "problem_url=" >> $GITHUB_OUTPUT
           fi
 
       - name: Run LeetCode Solver
@@ -191,11 +199,17 @@ jobs:
             EXTRA_FLAG="--extra-index ${{ steps.params.outputs.extra_index }}"
           fi
           
+          URL_FLAG=""
+          if [ -n "${{ steps.params.outputs.problem_url }}" ]; then
+            URL_FLAG="--url '${{ steps.params.outputs.problem_url }}'"
+          fi
+
           python main.py \
             --mode ${{ steps.params.outputs.mode }} \
             --difficulty ${{ steps.params.outputs.difficulty }} \
             --count ${{ steps.params.outputs.problem_count }} \
-            $EXTRA_FLAG
+            $EXTRA_FLAG \
+            $URL_FLAG
 
       - name: Persist Solved History
         if: always()

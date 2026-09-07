@@ -8,9 +8,19 @@ class LeetCodeClient:
     BASE_URL = "https://leetcode.com"
     GRAPHQL_URL = "https://leetcode.com/graphql"
 
+    @staticmethod
+    def _clean_token(token: Optional[str]) -> Optional[str]:
+        if not token:
+            return None
+        cleaned = token.strip().strip("'\"")
+        # Strip accidental key prefix if user copied "LEETCODE_SESSION=..." or "csrftoken=..."
+        if "=" in cleaned:
+            cleaned = cleaned.split("=", 1)[1].strip().strip("'\"")
+        return cleaned
+
     def __init__(self, session_cookie: Optional[str] = None, csrf_token: Optional[str] = None):
-        self.session_cookie = session_cookie
-        self.csrf_token = csrf_token
+        self.session_cookie = self._clean_token(session_cookie)
+        self.csrf_token = self._clean_token(csrf_token)
         self.session = requests.Session()
         self.headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",

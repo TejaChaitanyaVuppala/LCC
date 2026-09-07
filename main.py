@@ -2,6 +2,8 @@ import os
 import sys
 import time
 import argparse
+import re
+from typing import Optional
 from dotenv import load_dotenv
 
 from src.logger import console, log_info, log_success, log_warning, log_error, print_banner, HAS_RICH
@@ -10,6 +12,25 @@ from src.solver import GeminiSolver
 from src.groq_solver import GroqSolver
 from src.notifier import send_email_report
 from src.history_tracker import HistoryTracker
+
+def extract_slug(input_str: Optional[str]) -> Optional[str]:
+    """Extracts the LeetCode question titleSlug from a slug or full URL."""
+    if not input_str:
+        return None
+    cleaned = input_str.strip().strip("'\"")
+    # If it's a URL (e.g., https://leetcode.com/problems/two-sum/ or http://...)
+    match = re.search(r'leetcode\.com/problems/([^/?#\s]+)', cleaned)
+    if match:
+        return match.group(1).strip("/")
+    # If it's a path like problems/two-sum/
+    if "/" in cleaned:
+        parts = [p for p in cleaned.split("/") if p and p not in ["http:", "https:", "www.leetcode.com", "leetcode.com", "description", "solutions"]]
+        if "problems" in parts:
+            idx = parts.index("problems")
+            if idx + 1 < len(parts):
+                return parts[idx + 1]
+        return parts[-1]
+    return cleaned
 
 if HAS_RICH:
     from rich.panel import Panel
@@ -332,7 +353,8 @@ def main():
                         help="Difficulty filter for extra problems: EASY, MEDIUM, HARD, or RANDOM (default: RANDOM)")
     parser.add_argument("--tag", default=os.getenv("PROBLEM_TAG", None),
                         help="Optional topic tag filter for extra problems (e.g. array, dynamic-programming, tree)")
-    parser.add_argument("--slug", help="LeetCode problem slug to solve a specific problem (e.g. two-sum)")
+    parser.add_argument("--slug", "--url", "--problem", dest="slug", default=os.getenv("PROBLEM_URL", os.getenv("PROBLEM_SLUG", None)),
+                        help="LeetCode problem URL or slug to solve a specific problem (e.g. https://leetcode.com/problems/two-sum/ or two-sum)")
     parser.add_argument("--extra-index", type=int, default=None,
                         help="Index of the extra problem (1 to 5) for tracking and email labeling")
     parser.add_argument("--dry-run", action="store_true", help="Fetch and solve problem without submitting to LeetCode")
@@ -364,11 +386,13 @@ def main():
     gemini_solver = GeminiSolver(api_key=gemini_api_key, model_name=gemini_model) if gemini_api_key else None
     groq_solver = GroqSolver(api_key=groq_api_key, model_name=groq_model) if groq_api_key else None
 
+    target_slug = extract_slug(args.slug)
+
     # Determine tasks to run based on mode
     try:
-        if args.slug:
-            log_info(f"Targeting specific problem slug: '{args.slug}'...")
-            problem = lc_client.get_question_detail(args.slug)
+        if target_slug:
+            log_info(f"Targeting specific problem: '{target_slug}'...")
+            problem = lc_client.get_question_detail(target_slug)
             success = solve_single_problem(problem, lc_client, gemini_solver, groq_solver, args, history_tracker, mode="extra", extra_index=args.extra_index)
             if not success:
                 sys.exit(1)

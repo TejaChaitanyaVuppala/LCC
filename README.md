@@ -75,8 +75,9 @@ An autonomous bot that fetches the official LeetCode Daily Challenge plus **5 ad
    # 4. Filter by specific topic tag
    python main.py --mode extra --tag dynamic-programming
 
-   # 5. Solve a specific problem slug
-   python main.py --slug two-sum
+   # 5. Solve a specific problem URL or slug
+   python main.py --url https://leetcode.com/problems/two-sum/
+   python main.py --slug find-closest-number-to-zero
 
    # 6. Test with dry-run (does not submit to LeetCode)
    python main.py --dry-run
@@ -107,9 +108,10 @@ The repository includes [`.github/workflows/daily_streak.yml`](.github/workflows
    - `RESEND_API_KEY` (Optional)
    - `TO_EMAIL` (Optional)
 
-3. **Trigger Manually Anytime**:
+3. **Trigger Manually Anytime (or solve a custom problem by URL)**:
    - Go to **Actions** -> **LeetCode Daily Streak & Multi-Problem Bot** -> **Run workflow**.
-   - Select mode (`potd`, `extra`, `batch`) and difficulty.
+   - You can paste a specific problem link (e.g., `https://leetcode.com/problems/two-sum/`) in the **Problem URL or Slug** input box to solve that exact problem!
+   - Or choose solving mode (`potd`, `extra`, `batch`) and difficulty.
 
 ---
 
@@ -118,6 +120,7 @@ The repository includes [`.github/workflows/daily_streak.yml`](.github/workflows
 | Option | Environment Variable | CLI Argument | Default | Description |
 |---|---|---|---|---|
 | Mode | `SOLVER_MODE` | `--mode` | `potd` | `potd` (Daily Challenge), `extra` (Single Extra), `batch` (Multiple) |
+| Problem URL / Slug | `PROBLEM_URL` | `--url` / `--slug` | None | Solve an exact LeetCode problem URL or slug |
 | Problem Count | `PROBLEM_COUNT` | `--count` | `1` | Number of problems for batch/extra runs |
 | Difficulty | `EXTRA_PROBLEM_DIFFICULTY` | `--difficulty` | `RANDOM` | `EASY`, `MEDIUM`, `HARD`, or `RANDOM` |
 | Tag | `PROBLEM_TAG` | `--tag` | None | Filter extra problems by topic (e.g. `tree`, `dp`) |
