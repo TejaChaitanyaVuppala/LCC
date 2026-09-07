@@ -755,6 +755,15 @@
       "solved_at": "2026-09-07T11:04:44.703620+05:30",
       "date": "2026-09-07",
       "winner_model": "Gemini"
+    },
+    "reverse-integer": {
+      "title": "Reverse Integer",
+      "frontend_id": "7",
+      "difficulty": "Medium",
+      "mode": "extra",
+      "solved_at": "2026-09-07T14:14:10.506494+05:30",
+      "date": "2026-09-07",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
@@ -820,8 +829,8 @@
     },
     "2026-09-07": {
       "potd": 1,
-      "extra": 2,
-      "total": 3
+      "extra": 3,
+      "total": 4
     }
   }
 }
