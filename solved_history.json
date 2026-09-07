@@ -764,6 +764,15 @@
       "solved_at": "2026-09-07T14:14:10.506494+05:30",
       "date": "2026-09-07",
       "winner_model": "Gemini"
+    },
+    "minimum-sum-of-four-digit-number-after-splitting-digits": {
+      "title": "Minimum Sum of Four Digit Number After Splitting Digits",
+      "frontend_id": "2160",
+      "difficulty": "Easy",
+      "mode": "extra",
+      "solved_at": "2026-09-07T14:31:36.201312+05:30",
+      "date": "2026-09-07",
+      "winner_model": "Groq"
     }
   },
   "daily_counts": {
@@ -829,8 +838,8 @@
     },
     "2026-09-07": {
       "potd": 1,
-      "extra": 3,
-      "total": 4
+      "extra": 4,
+      "total": 5
     }
   }
 }
