@@ -8,10 +8,24 @@
       "solved_at": "2026-09-07T20:11:52.710584+05:30",
       "date": "2026-09-07",
       "winner_model": "Groq"
+    },
+    "count-commas-in-range": {
+      "title": "Count Commas in Range",
+      "frontend_id": "3870",
+      "difficulty": "Easy",
+      "mode": "potd",
+      "solved_at": "2026-09-08T10:20:30.003701+05:30",
+      "date": "2026-09-08",
+      "winner_model": "Gemini"
     }
   },
   "daily_counts": {
     "2026-09-07": {
+      "potd": 1,
+      "extra": 0,
+      "total": 1
+    },
+    "2026-09-08": {
       "potd": 1,
       "extra": 0,
       "total": 1
